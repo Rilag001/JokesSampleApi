@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">JokesApi</string>
+    <string name="good_jokes">Good jokes!</string>
+    <string name="joke_categories">Joke categories</string>
+    <string name="random_joke">Random joke</string>
+    <string name="x_joke">%1$s jokes</string>
+    <string name="no_more_jokes">"You reached the end. No more jokes over here. \n Check ouy the other categories!"</string>
+    <string name="error_network">No internet connection</string>
+    <string name="error_not_found">No jokes found</string>
+    <string name="error_unexpected">An unexpected error occurred</string>
+</resources>
