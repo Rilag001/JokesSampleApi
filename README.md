@@ -10,7 +10,7 @@ Jokes overview screen.
 
 Jokes category screen.
 - Display card of each jokes in that category in a list.
-- Each item show image, joke text and punchline.
+- Each item show image and joke with setup and punchline.
 
 # Architecture
 - The data repository has a local data source (Room) and a remote data source (REST API).

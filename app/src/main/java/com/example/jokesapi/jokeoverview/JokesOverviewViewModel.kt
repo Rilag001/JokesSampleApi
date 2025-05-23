@@ -29,7 +29,7 @@ class JokesOverviewViewModel @Inject constructor(
 
     init {
         viewModelScope.launch(ioDispatcher) {
-            mutState.emit(stateTask())
+            loadJokes()
         }
     }
 
@@ -45,8 +45,13 @@ class JokesOverviewViewModel @Inject constructor(
                 mutSideEffect.emit(NavigateToJokeCategory(jokeType = event.jokeType))
             }
             JokesOverviewContract.Event.OnRetryClicked -> {
-                mutState.emit(stateTask())
+                loadJokes()
             }
         }
+    }
+
+    private suspend fun loadJokes() {
+        mutState.emit(JokesOverviewContract.State.Loading)
+        mutState.emit(stateTask())
     }
 }

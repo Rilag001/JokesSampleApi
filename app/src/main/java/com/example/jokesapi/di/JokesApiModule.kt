@@ -64,6 +64,7 @@ class JokesApiModule {
             context,
             JokesDatabase::class.java, "database-jokes"
         ).build().jokesDao()
+
         return JokesLocalDataSource(jokesDao = jokesDao)
     }
 
@@ -74,6 +75,7 @@ class JokesApiModule {
         networkConnectivity: NetworkConnectivity,
     ): JokesRemoteDataSource {
         val jokesService: JokesService = retrofit.create(JokesService::class.java)
+
         return JokesRemoteDataSource(
             jokesService = jokesService,
             ioDispatcher = dispatcher,
@@ -82,7 +84,7 @@ class JokesApiModule {
     }
 
     @Provides
-    fun provideStarWarsRepository(
+    fun provideJokesRepository(
         dispatcher: CoroutineDispatcher,
         localDataSource: JokesLocalDataSource,
         remoteDataSource: JokesRemoteDataSource,

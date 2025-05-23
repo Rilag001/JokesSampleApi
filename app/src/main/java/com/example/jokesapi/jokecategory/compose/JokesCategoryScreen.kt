@@ -107,15 +107,6 @@ fun JokesCategoryScreen(
                                 JokeCard(joke = state.jokes[it])
                             }
                             item {
-                                Image(
-                                    modifier = Modifier
-                                        .padding(top = 16.dp)
-                                        .fillMaxWidth()
-                                        .align(Alignment.Center)
-                                        .size(50.dp),
-                                    painter = painterResource(R.drawable.end),
-                                    contentDescription = "End image",
-                                )
                                 Text(
                                     modifier = Modifier
                                         .fillMaxWidth()

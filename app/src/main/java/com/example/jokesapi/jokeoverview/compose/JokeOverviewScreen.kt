@@ -43,6 +43,7 @@ import com.example.jokesapi.jokeoverview.JokesOverviewContract
 import com.example.jokesapi.jokeoverview.JokesOverviewContract.Event
 import com.example.jokesapi.shared.compose.JokeCard
 import com.example.jokesapi.shared.compose.JokeErrorMessage
+import com.example.jokesapi.shared.compose.JokeImage
 import com.example.jokesapi.shared.model.JokeType
 import com.example.jokesapi.shared.model.JokeUi
 import com.example.jokesapi.ui.theme.Typography
@@ -79,7 +80,7 @@ fun JokeOverviewScreen(
                     JokesOverviewContract.State.Loading -> {
                         CircularProgressIndicator(
                             modifier = Modifier
-                                .size(24.dp)
+                                .size(48.dp)
                                 .align(Alignment.Center),
                         )
                     }
@@ -132,22 +133,9 @@ fun JokeList(jokes: List<JokeType>, randomJoke: JokeUi, onEvent: (Event) -> Unit
                     .clip(RoundedCornerShape(8.dp))
                     .clickable { onEvent(Event.OnJokeTypeClicked(jokes[it])) }
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp, vertical = 24.dp),
+                    .padding( 8.dp),
             ) {
-                val imageRes = when(jokes[it]) {
-                    JokeType.GENERAL -> R.drawable.general
-                    JokeType.PROGRAMMING -> R.drawable.programming
-                    JokeType.KNOCK_KNOCK -> R.drawable.knock
-                }
-
-                Image(
-                    modifier = Modifier
-                        .align(Alignment.CenterVertically)
-                        .size(50.dp),
-                    painter = painterResource(imageRes),
-                    contentDescription = "Joke Image",
-                    colorFilter = ColorFilter.tint(Color.Black)
-                )
+                JokeImage(jokeType = jokes[it])
                 Text(
                     modifier = Modifier
                         .align(Alignment.CenterVertically)
@@ -201,6 +189,16 @@ private fun PreviewJokeOverViewScreenError() {
     JokeOverviewScreen(
         modifier = Modifier,
         state = JokesOverviewContract.State.Error(messageRes = R.string.error_network),
+        onEvent = {}
+    )
+}
+
+@Preview
+@Composable
+private fun PreviewJokeOverViewScreenLoading() {
+    JokeOverviewScreen(
+        modifier = Modifier,
+        state = JokesOverviewContract.State.Loading,
         onEvent = {}
     )
 }
