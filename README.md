@@ -23,4 +23,4 @@ Written in Kotlin and Jetpack Compose.
 Hilt for dependency injection.
 Okhttp and Retrofit for networking with REST API.
 Room db for persistent local storage. 
-yolo
+yolo 1
