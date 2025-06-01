@@ -19,4 +19,8 @@ class JokesLocalDataSource(val jokesDao: JokesDao) {
             jokesDao.insertJoke(it)
         }
     }
+
+    fun deleteJokes() {
+        jokesDao.delete()
+    }
 }
