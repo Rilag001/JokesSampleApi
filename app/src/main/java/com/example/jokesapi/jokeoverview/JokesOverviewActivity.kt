@@ -26,9 +26,7 @@ class JokesOverviewActivity : ComponentActivity() {
         setContent {
             JokesApiTheme {
                 val state by viewModel.state.collectAsStateWithLifecycle()
-                JokesApiTheme {
-                    JokeOverviewScreen(Modifier, state, viewModel::send)
-                }
+                JokeOverviewScreen(Modifier, state, viewModel::send)
             }
             SetUpSideEffects()
         }

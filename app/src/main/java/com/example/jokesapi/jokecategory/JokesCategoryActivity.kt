@@ -44,9 +44,7 @@ class JokesCategoryActivity : ComponentActivity() {
         setContent {
             JokesApiTheme {
                 val state by viewModel.state.collectAsStateWithLifecycle()
-                JokesApiTheme {
-                    JokesCategoryScreen(Modifier, state, viewModel::send)
-                }
+                JokesCategoryScreen(Modifier, state, viewModel::send)
 
                 SetUpSideEffects()
             }
