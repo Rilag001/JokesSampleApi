@@ -16,7 +16,7 @@ Jokes category screen.
 - The data repository has a local data source (Room) and a remote data source (REST API).
 - First checks if we have jokes in local, and data is not stale, before fetching data from remote.
 - MVVM architecture is used to separate UI and business logic.
-- Unidirectional data flow is used to manage user actions, UI state and side effects in a predictable way.
+- Single activity with Compose navigation.
 
 # Tech Stack
 Written in Kotlin and Jetpack Compose.

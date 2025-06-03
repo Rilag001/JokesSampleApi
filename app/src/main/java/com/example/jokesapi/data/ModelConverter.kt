@@ -25,6 +25,7 @@ fun JokeApi.toJokeEntity(): JokesEntity {
 
 fun JokeApi.toUiModel(): JokeUi {
     return JokeUi(
+        id = this.id,
         jokeType = this.type.toJokeType(),
         setup = this.setup,
         punchline = this.punchline,

@@ -1,13 +1,11 @@
 package com.example.jokesapi.shared.compose
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -16,11 +14,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.jokesapi.R
 import com.example.jokesapi.shared.model.JokeType
 import com.example.jokesapi.shared.model.JokeUi
 import com.example.jokesapi.ui.theme.Typography
@@ -55,6 +50,7 @@ fun JokeCard(joke: JokeUi) {
 private fun PreviewJokeCard() {
     JokeCard(
         joke = JokeUi(
+            id = 1,
             setup = "Why did the chicken cross the road? Why did the chicken cross the road?",
             punchline = "To get to the other side!",
             jokeType = JokeType.GENERAL
@@ -67,6 +63,7 @@ private fun PreviewJokeCard() {
 private fun PreviewJokeCard2() {
     JokeCard(
         joke = JokeUi(
+            id = 1,
             setup = "Why did the chicken cross the road? Why did the chicken cross the road?",
             punchline = "To get to the other side!",
             jokeType = JokeType.KNOCK_KNOCK
@@ -79,6 +76,7 @@ private fun PreviewJokeCard2() {
 private fun PreviewJokeCard3() {
     JokeCard(
         joke = JokeUi(
+            id = 1,
             setup = "Why did the chicken cross the road? Why did the chicken cross the road?",
             punchline = "To get to the other side!",
             jokeType = JokeType.PROGRAMMING
