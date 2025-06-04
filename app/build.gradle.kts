@@ -1,9 +1,12 @@
+import org.gradle.kotlin.dsl.androidTestImplementation
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 android {
@@ -51,9 +54,11 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.fragmentKtx)
+    implementation(libs.androidx.navigation.compose)
 
     implementation(libs.daggerHiltAndroid)
     implementation(libs.androidx.hilt.work)
+    implementation(libs.androidx.hilt.navigation.compose)
     debugImplementation(libs.androidx.ui.tooling)
     ksp(libs.daggerHiltCompiler)
     ksp(libs.androidx.hilt.compiler)
@@ -63,6 +68,12 @@ dependencies {
     implementation(libs.network.loggingInterceptor)
     implementation(libs.timber)
     implementation(libs.androidx.work.runtime.ktx)
+
+    testImplementation(libs.tests.junit)
+    testImplementation(libs.tests.mockito.core)
+    testImplementation(libs.tests.mockito.kotlin)
+    testImplementation(libs.tests.coroutines)
+    testImplementation(libs.tests.coroutines.turbine)
 
     implementation(libs.room.runtime)
     ksp(libs.room.kps.compiler)

@@ -26,7 +26,6 @@ class JokesRepository(
         } else {
             val remoteResult = remoteDataSource.getGoodJokes()
             if (remoteResult.data != null) {
-                localDataSource.deleteJokes()
                 localDataSource.insertJokes(jokes = remoteResult.data.map { it.toJokeEntity() })
             }
             remoteResult

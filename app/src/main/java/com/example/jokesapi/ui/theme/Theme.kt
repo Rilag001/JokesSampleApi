@@ -1,22 +1,38 @@
 package com.example.jokesapi.ui.theme
 
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.lightColorScheme
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
-
-private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-)
+import androidx.compose.runtime.CompositionLocalProvider
 
 @Composable
 fun JokesApiTheme(
+    isDarkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    MaterialTheme(
-        colorScheme = LightColorScheme,
-        typography = Typography,
-        content = content
+
+    val colorScheme: ThemeColors
+    val typography: JokeTypography
+    if (!isDarkTheme) {
+        colorScheme = LightThemeColors
+        typography = LightTypography
+    } else {
+        colorScheme = DarkThemeColors
+        typography = DarkTypography
+    }
+
+    CompositionLocalProvider(
+        LocalThemeColors provides colorScheme,
+        LocalThemeTypography provides typography,
+        content = content,
     )
+}
+
+object JokesApiTheme {
+    val colors: ThemeColors
+        @Composable
+        get() = LocalThemeColors.current
+
+    val typography: JokeTypography
+        @Composable
+        get() = LocalThemeTypography.current
 }

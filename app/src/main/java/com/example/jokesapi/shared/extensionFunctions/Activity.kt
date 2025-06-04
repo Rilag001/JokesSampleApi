@@ -6,6 +6,6 @@ import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
 
 fun ComponentActivity.setTransparentEdgeToEdge() {
-    val style = SystemBarStyle.light(scrim = Color.TRANSPARENT, darkScrim = Color.TRANSPARENT)
+    val style = SystemBarStyle.auto(lightScrim = Color.TRANSPARENT, darkScrim = Color.TRANSPARENT)
     this.enableEdgeToEdge(statusBarStyle = style, navigationBarStyle = style)
 }

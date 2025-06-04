@@ -1,6 +1,5 @@
 package com.example.jokesapi.jokecategory.domain
 
-import androidx.compose.ui.text.capitalize
 import com.example.jokesapi.R
 import com.example.jokesapi.data.JokesRepository
 import com.example.jokesapi.data.remote.model.JokesResultFailure
