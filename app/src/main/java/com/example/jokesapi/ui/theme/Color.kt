@@ -12,10 +12,13 @@ val DarkType = Color(0xFFFFFFFF)
 val DarkContent = Color(0xFF000000)
 val DarkBackground = Color(0xFF343131)
 
+val ForestGreen = Color(0xFF67B717)
+
 data class ThemeColors(
     val type: Color = Color.Unspecified,
     val content: Color = Color.Unspecified,
     val background: Color = Color.Unspecified,
+    val forestGreen: Color = ForestGreen,
 )
 
 val LightThemeColors = ThemeColors(

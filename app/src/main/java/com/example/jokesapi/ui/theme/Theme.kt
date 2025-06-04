@@ -23,7 +23,7 @@ fun JokesApiTheme(
     CompositionLocalProvider(
         LocalThemeColors provides colorScheme,
         LocalThemeTypography provides typography,
-        content = content
+        content = content,
     )
 }
 

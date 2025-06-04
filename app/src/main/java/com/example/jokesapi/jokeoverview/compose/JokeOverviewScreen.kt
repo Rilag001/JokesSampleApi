@@ -117,6 +117,7 @@ private fun JokeOverviewScreenContent(
                             modifier = Modifier
                                 .size(48.dp)
                                 .align(Alignment.Center),
+                            color = JokesApiTheme.colors.forestGreen,
                         )
                     }
                     is JokesOverviewContract.State.Error -> {
@@ -133,7 +134,7 @@ private fun JokeOverviewScreenContent(
                                     .clickable { onEvent(Event.OnRetryClicked) },
                                 painter = painterResource(R.drawable.reload),
                                 contentDescription = "Joke Image",
-                                colorFilter = ColorFilter.tint(JokesApiTheme.colors.type)
+                                colorFilter = ColorFilter.tint(JokesApiTheme.colors.forestGreen)
                             )
                         }
                     }
