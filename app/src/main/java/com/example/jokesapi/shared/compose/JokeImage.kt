@@ -20,16 +20,20 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.platform.debugInspectorInfo
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
+import com.bumptech.glide.integration.compose.GlideImage
 import com.example.jokesapi.R
 import com.example.jokesapi.shared.extensionFunctions.conditional
 import com.example.jokesapi.shared.model.JokeType
 
+@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun JokeImage(jokeType: JokeType) {
-    var enabled by remember {
+    var shakeEnabled by remember {
         mutableStateOf(false)
     }
 
@@ -39,22 +43,33 @@ fun JokeImage(jokeType: JokeType) {
         JokeType.KNOCK_KNOCK -> R.drawable.knock
     }
 
-    Image(
-        modifier = Modifier
-            .conditional(jokeType == JokeType.GENERAL) {
-                scale(scaleX = -1f, scaleY = 1f)
-            }
-            .conditional(jokeType == JokeType.GENERAL) {
-                shake(enabled) { enabled = false }
-            }
-            .clip(RoundedCornerShape(8.dp))
-            .size(100.dp)
-            .clickable { enabled = !enabled }
-        ,
-        contentScale = ContentScale.Crop,
-        painter = painterResource(imageRes),
-        contentDescription = "Joke Image",
-    )
+    val imageModifier = Modifier
+        .conditional(jokeType == JokeType.GENERAL) {
+            scale(scaleX = -1f, scaleY = 1f)
+        }
+        .conditional(jokeType == JokeType.GENERAL) {
+            shake(shakeEnabled) { shakeEnabled = false }
+        }
+        .clip(RoundedCornerShape(8.dp))
+        .size(100.dp)
+        .clickable { shakeEnabled = !shakeEnabled }
+
+    if (!LocalInspectionMode.current) {
+        GlideImage(
+            modifier = imageModifier,
+            model = imageRes,
+            contentDescription = "Joke Image",
+            contentScale = ContentScale.Crop,
+        )
+    } else {
+        // This is a workaround for the issue where the glide image does not show up in the preview
+        Image(
+            modifier = imageModifier,
+            contentScale = ContentScale.Crop,
+            painter = painterResource(imageRes),
+            contentDescription = "Joke Image",
+        )
+    }
 }
 
 fun Modifier.shake(enabled: Boolean, onFinished:() -> Unit) = composed(

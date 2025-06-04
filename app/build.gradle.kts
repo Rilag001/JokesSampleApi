@@ -68,6 +68,7 @@ dependencies {
     implementation(libs.network.loggingInterceptor)
     implementation(libs.timber)
     implementation(libs.androidx.work.runtime.ktx)
+    implementation(libs.image.glideCompose)
 
     testImplementation(libs.tests.junit)
     testImplementation(libs.tests.mockito.core)
