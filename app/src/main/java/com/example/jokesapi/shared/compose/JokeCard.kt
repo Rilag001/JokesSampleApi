@@ -47,38 +47,89 @@ fun JokeCard(joke: JokeUi) {
 @Preview
 @Composable
 private fun PreviewJokeCard() {
-    JokeCard(
-        joke = JokeUi(
-            id = 1,
-            setup = "Why did the chicken cross the road? Why did the chicken cross the road?",
-            punchline = "To get to the other side!",
-            jokeType = JokeType.GENERAL
+    JokesApiTheme(isDarkTheme = false) {
+        JokeCard(
+            joke = JokeUi(
+                id = 1,
+                setup = "Why did the chicken cross the road? Why did the chicken cross the road?",
+                punchline = "To get to the other side!",
+                jokeType = JokeType.GENERAL
+            )
         )
-    )
+    }
+}
+
+@Preview
+@Composable
+private fun PreviewJokeCardDark() {
+    JokesApiTheme(isDarkTheme = true) {
+        JokeCard(
+            joke = JokeUi(
+                id = 1,
+                setup = "Why did the chicken cross the road? Why did the chicken cross the road?",
+                punchline = "To get to the other side!",
+                jokeType = JokeType.GENERAL
+            )
+        )
+    }
 }
 
 @Preview
 @Composable
 private fun PreviewJokeCard2() {
-    JokeCard(
-        joke = JokeUi(
-            id = 1,
-            setup = "Why did the chicken cross the road? Why did the chicken cross the road?",
-            punchline = "To get to the other side!",
-            jokeType = JokeType.KNOCK_KNOCK
+    JokesApiTheme(isDarkTheme = false) {
+        JokeCard(
+            joke = JokeUi(
+                id = 1,
+                setup = "Why did the chicken cross the road? Why did the chicken cross the road?",
+                punchline = "To get to the other side!",
+                jokeType = JokeType.KNOCK_KNOCK
+            )
         )
-    )
+    }
+}
+
+@Preview
+@Composable
+private fun PreviewJokeCard2Dark() {
+    JokesApiTheme(isDarkTheme = true) {
+        JokeCard(
+            joke = JokeUi(
+                id = 1,
+                setup = "Why did the chicken cross the road? Why did the chicken cross the road?",
+                punchline = "To get to the other side!",
+                jokeType = JokeType.KNOCK_KNOCK
+            )
+        )
+    }
 }
 
 @Preview
 @Composable
 private fun PreviewJokeCard3() {
-    JokeCard(
-        joke = JokeUi(
-            id = 1,
-            setup = "Why did the chicken cross the road? Why did the chicken cross the road?",
-            punchline = "To get to the other side!",
-            jokeType = JokeType.PROGRAMMING
+    JokesApiTheme(isDarkTheme = false) {
+        JokeCard(
+            joke = JokeUi(
+                id = 1,
+                setup = "Why did the chicken cross the road? Why did the chicken cross the road?",
+                punchline = "To get to the other side!",
+                jokeType = JokeType.PROGRAMMING
+            )
         )
-    )
+    }
+}
+
+@Preview
+@Composable
+private fun PreviewJokeCard3Dark() {
+    JokesApiTheme(isDarkTheme = true) {
+        JokeCard(
+            joke = JokeUi(
+                id = 1,
+                setup = "Why did the chicken cross the road? Why did the chicken cross the road?",
+                punchline = "To get to the other side!",
+                jokeType = JokeType.PROGRAMMING
+            )
+        )
+    }
 }

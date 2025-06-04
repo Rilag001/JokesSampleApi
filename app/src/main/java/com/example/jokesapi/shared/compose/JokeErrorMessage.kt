@@ -21,5 +21,15 @@ fun JokeErrorMessage(modifier: Modifier, @StringRes messageRes: Int) {
 @Preview
 @Composable
 private fun PreviewErrorMessage() {
-    JokeErrorMessage(modifier = Modifier, messageRes = R.string.error_network)
+    JokesApiTheme(isDarkTheme = false) {
+        JokeErrorMessage(modifier = Modifier, messageRes = R.string.error_network)
+    }
+}
+
+@Preview
+@Composable
+private fun PreviewErrorMessageDark() {
+    JokesApiTheme(isDarkTheme = true) {
+        JokeErrorMessage(modifier = Modifier, messageRes = R.string.error_network)
+    }
 }
