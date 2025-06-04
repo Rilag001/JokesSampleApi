@@ -45,7 +45,7 @@ fun JokeImage(jokeType: JokeType) {
                 scale(scaleX = -1f, scaleY = 1f)
             }
             .conditional(jokeType == JokeType.GENERAL) {
-                shake(enabled)
+                shake(enabled) { enabled = false }
             }
             .clip(RoundedCornerShape(8.dp))
             .size(100.dp)
@@ -57,7 +57,7 @@ fun JokeImage(jokeType: JokeType) {
     )
 }
 
-fun Modifier.shake(enabled: Boolean) = composed(
+fun Modifier.shake(enabled: Boolean, onFinished:() -> Unit) = composed(
     factory = {
         val scale by animateFloatAsState(
             targetValue = if (enabled) 1f else 0.9f,
@@ -65,7 +65,8 @@ fun Modifier.shake(enabled: Boolean) = composed(
                 iterations = 6,
                 animation = tween(durationMillis = 50, easing = LinearEasing),
                 repeatMode = RepeatMode.Reverse
-            )
+            ),
+            finishedListener =  { onFinished() }
         )
 
         Modifier.graphicsLayer {
