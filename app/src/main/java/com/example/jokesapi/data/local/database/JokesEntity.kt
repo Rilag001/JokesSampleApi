@@ -13,6 +13,6 @@ data class JokesEntity(
     @ColumnInfo("type") val type: String,
     @ColumnInfo("setup") val setup: String,
     @ColumnInfo("punchline") val punchline: String,
-    @ColumnInfo(name = "updated_at", defaultValue = "(unixepoch('now'))")
+    @ColumnInfo(name = "updated_at")
     val updatedAt: Long = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC),
 )

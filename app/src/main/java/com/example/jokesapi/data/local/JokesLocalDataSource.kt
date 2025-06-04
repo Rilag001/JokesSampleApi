@@ -15,6 +15,7 @@ class JokesLocalDataSource(val jokesDao: JokesDao) {
     }
 
     fun insertJokes(jokes: List<JokesEntity>) {
+        deleteJokes()
         jokes.forEach {
             jokesDao.insertJoke(it)
         }

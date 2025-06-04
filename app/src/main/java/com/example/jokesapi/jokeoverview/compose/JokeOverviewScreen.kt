@@ -1,7 +1,5 @@
 package com.example.jokesapi.jokeoverview.compose
 
-import android.content.res.Configuration
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -45,12 +43,12 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
-import com.example.jokesapi.main.navigation.JokesScreen
 import com.example.jokesapi.R
 import com.example.jokesapi.jokeoverview.JokeOverviewListItem
 import com.example.jokesapi.jokeoverview.JokesOverviewContract
 import com.example.jokesapi.jokeoverview.JokesOverviewContract.Event
 import com.example.jokesapi.jokeoverview.JokesOverviewViewModel
+import com.example.jokesapi.main.navigation.JokesScreen
 import com.example.jokesapi.shared.compose.JokeCard
 import com.example.jokesapi.shared.compose.JokeErrorMessage
 import com.example.jokesapi.shared.compose.JokeImage
