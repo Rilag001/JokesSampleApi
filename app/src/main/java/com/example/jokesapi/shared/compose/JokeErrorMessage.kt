@@ -6,17 +6,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.sp
 import com.example.jokesapi.R
-import com.example.jokesapi.ui.theme.Typography
+import com.example.jokesapi.ui.theme.JokesApiTheme
 
 @Composable
 fun JokeErrorMessage(modifier: Modifier, @StringRes messageRes: Int) {
     Text(
         modifier = modifier,
         text = stringResource(messageRes),
-        style = Typography.bodyLarge,
-        fontSize = 20.sp,
+        style = JokesApiTheme.typography.body,
     )
 }
 

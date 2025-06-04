@@ -30,18 +30,19 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import com.example.jokesapi.R
 import com.example.jokesapi.jokecategory.JokesCategoryContract
 import com.example.jokesapi.jokecategory.JokesCategoryViewModel
 import com.example.jokesapi.shared.compose.JokeCard
 import com.example.jokesapi.shared.compose.JokeErrorMessage
 import com.example.jokesapi.shared.model.JokeType
 import com.example.jokesapi.shared.model.JokeUi
+import com.example.jokesapi.ui.theme.JokesApiTheme
 
 @Composable
 fun JokesCategoryScreen(
@@ -87,11 +88,11 @@ private fun JokesCategoryScreenContent(
         modifier = modifier,
         topBar = {
             TopAppBar(
-                modifier = Modifier.background(Color.White),
+                modifier = Modifier,
                 title = {
                     when (state) {
                         is JokesCategoryContract.State.DisplayJokes -> {
-                            Text(text = state.title, color = Color.Black)
+                            Text(text = state.title, style = JokesApiTheme.typography.title)
                         }
                         else -> Unit
                     }
@@ -101,19 +102,20 @@ private fun JokesCategoryScreenContent(
                         Icon(
                             imageVector = Icons.AutoMirrored.Default.ArrowBack,
                             contentDescription = "",
-                            tint = Color.Black,
+                            tint = JokesApiTheme.colors.type,
                             modifier = Modifier.size(24.dp),
                         )
                     }
                 },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent),
+                colors = TopAppBarDefaults
+                    .topAppBarColors(containerColor = JokesApiTheme.colors.content),
                 windowInsets = TopAppBarDefaults.windowInsets
             )
         },
         content = { paddingValues ->
             Box(
                 modifier = Modifier
-                    .background(color = Color(0xFFF2EDE8))
+                    .background(color = JokesApiTheme.colors.background)
                     .padding(paddingValues)
                     .windowInsetsPadding(WindowInsets.displayCutout.only(WindowInsetsSides.Horizontal))
                     .fillMaxSize()
@@ -149,19 +151,57 @@ private fun JokesCategoryScreenContent(
 
 @Preview
 @Composable
-private fun PreviewJokeOverViewScreen() {
-    val joke = JokeUi(
+private fun PreviewJokeOverViewScreenDisplayJokes() {
+    PreviewJokeOverViewScreenDisplayJokesContent()
+}
+
+@Preview
+@Composable
+private fun PreviewJokeOverViewScreenDisplayJokesDark() {
+    JokesApiTheme(isDarkTheme = true) {
+        PreviewJokeOverViewScreenDisplayJokesContent()
+    }
+}
+
+@Composable
+private fun PreviewJokeOverViewScreenDisplayJokesContent() {
+    val joke1 = JokeUi(
         id = 1,
         jokeType = JokeType.GENERAL,
         setup = "What kind of shoes does a thief wear?",
         punchline = "Sneakers"
     )
+    val joke2 = joke1.copy(id = 2)
+    val joke3 = joke1.copy(id = 3)
     JokesCategoryScreenContent(
         modifier = Modifier,
         state = JokesCategoryContract.State.DisplayJokes(
             title = "General",
-            jokes = listOf(joke, joke, joke),
+            jokes = listOf(joke1, joke2, joke3),
         ),
+        onEvent = {}
+    )
+}
+
+@Preview
+@Composable
+private fun PreviewJokeOverViewScreenError() {
+    PreviewJokeOverViewScreenErrorContent()
+}
+
+@Preview
+@Composable
+private fun PreviewJokeOverViewScreenErrorDark() {
+    JokesApiTheme(isDarkTheme = true) {
+        PreviewJokeOverViewScreenErrorContent()
+    }
+}
+
+@Composable
+private fun PreviewJokeOverViewScreenErrorContent() {
+    JokesCategoryScreenContent(
+        modifier = Modifier,
+        state = JokesCategoryContract.State.Error(messageRes = R.string.error_not_found),
         onEvent = {}
     )
 }

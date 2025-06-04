@@ -1,5 +1,7 @@
 package com.example.jokesapi.jokeoverview.compose
 
+import android.content.res.Configuration
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -33,7 +35,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -55,7 +56,7 @@ import com.example.jokesapi.shared.compose.JokeErrorMessage
 import com.example.jokesapi.shared.compose.JokeImage
 import com.example.jokesapi.shared.model.JokeType
 import com.example.jokesapi.shared.model.JokeUi
-import com.example.jokesapi.ui.theme.Typography
+import com.example.jokesapi.ui.theme.JokesApiTheme
 
 @Composable
 fun JokeOverviewScreen(
@@ -95,18 +96,18 @@ private fun JokeOverviewScreenContent(
         modifier = modifier,
         topBar = {
             TopAppBar(
-                modifier = Modifier.background(Color.White),
+                modifier = Modifier,
                 title = {
-                    Text(text = stringResource(R.string.good_jokes), color = Color.Black)
+                    Text(text = stringResource(R.string.good_jokes), style = JokesApiTheme.typography.title)
                 },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent),
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = JokesApiTheme.colors.content),
                 windowInsets = TopAppBarDefaults.windowInsets
             )
         },
         content = { paddingValues ->
             Box(
                 modifier = Modifier
-                    .background(color = Color(0xFFF2EDE8))
+                    .background(color = JokesApiTheme.colors.background)
                     .padding(paddingValues)
                     .windowInsetsPadding(WindowInsets.displayCutout.only(WindowInsetsSides.Horizontal))
                     .fillMaxSize()
@@ -134,7 +135,7 @@ private fun JokeOverviewScreenContent(
                                     .clickable { onEvent(Event.OnRetryClicked) },
                                 painter = painterResource(R.drawable.reload),
                                 contentDescription = "Joke Image",
-                                colorFilter = ColorFilter.tint(Color.Black)
+                                colorFilter = ColorFilter.tint(JokesApiTheme.colors.type)
                             )
                         }
                     }
@@ -166,7 +167,7 @@ fun JokeList(list: List<JokeOverviewListItem>, onEvent: (Event) -> Unit) {
                 is JokeOverviewListItem.JokeTypeCard -> {
                     Row(
                         modifier = Modifier
-                            .background(Color(0xFFFCFBF8), RoundedCornerShape(8.dp))
+                            .background(JokesApiTheme.colors.content, RoundedCornerShape(8.dp))
                             .clip(RoundedCornerShape(8.dp))
                             .clickable { onEvent(Event.OnJokeTypeClicked(item.jokeType)) }
                             .fillMaxWidth()
@@ -178,8 +179,7 @@ fun JokeList(list: List<JokeOverviewListItem>, onEvent: (Event) -> Unit) {
                                 .align(Alignment.CenterVertically)
                                 .padding(start = 16.dp),
                             text = stringResource(R.string.x_joke, item.jokeType.label.capitalize(Locale.current)),
-                            color = Color.Black,
-                            style = Typography.bodyLarge
+                            style = JokesApiTheme.typography.body
                         )
                     }
                 }
@@ -196,14 +196,26 @@ private fun SectionTitle(@StringRes textRes: Int) {
     Text(
         modifier = Modifier.padding(top = 8.dp),
         text = stringResource(textRes),
-        style = Typography.bodyLarge,
-        color = Color.Black
+        style = JokesApiTheme.typography.body,
     )
 }
 
 @Preview
 @Composable
 private fun PreviewJokeOverViewScreenDisplayJokeCategories() {
+    PreviewJokeOverViewScreenDisplayJokeCategoriesContent()
+}
+
+@Preview
+@Composable
+private fun PreviewJokeOverViewScreenDisplayJokeCategoriesDark() {
+    JokesApiTheme(isDarkTheme = true) {
+        PreviewJokeOverViewScreenDisplayJokeCategoriesContent()
+    }
+}
+
+@Composable
+private fun PreviewJokeOverViewScreenDisplayJokeCategoriesContent() {
     val randomJoke = JokeUi(
         id = 1,
         jokeType = JokeType.GENERAL,
@@ -239,10 +251,34 @@ private fun PreviewJokeOverViewScreenError() {
 
 @Preview
 @Composable
+private fun PreviewJokeOverViewScreenErrorDark() {
+    JokesApiTheme(isDarkTheme = true) {
+        JokeOverviewScreenContent(
+            modifier = Modifier,
+            state = JokesOverviewContract.State.Error(messageRes = R.string.error_network),
+            onEvent = {}
+        )
+    }
+}
+
+@Preview
+@Composable
 private fun PreviewJokeOverViewScreenLoading() {
     JokeOverviewScreenContent(
         modifier = Modifier,
         state = JokesOverviewContract.State.Loading,
         onEvent = {}
     )
+}
+
+@Preview
+@Composable
+private fun PreviewJokeOverViewScreenLoadingDark() {
+    JokesApiTheme(isDarkTheme = true) {
+        JokeOverviewScreenContent(
+            modifier = Modifier,
+            state = JokesOverviewContract.State.Loading,
+            onEvent = {}
+        )
+    }
 }

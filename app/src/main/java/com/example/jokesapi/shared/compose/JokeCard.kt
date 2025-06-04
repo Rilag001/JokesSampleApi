@@ -13,18 +13,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.jokesapi.shared.model.JokeType
 import com.example.jokesapi.shared.model.JokeUi
-import com.example.jokesapi.ui.theme.Typography
+import com.example.jokesapi.ui.theme.JokesApiTheme
 
 @Composable
 fun JokeCard(joke: JokeUi) {
     Row(
         modifier = Modifier
-            .background(Color(0xFFFCFBF8), RoundedCornerShape(8.dp))
+            .background(JokesApiTheme.colors.content, RoundedCornerShape(8.dp))
             .fillMaxWidth()
             .wrapContentSize()
             .clip(RoundedCornerShape(8.dp))
@@ -39,8 +38,8 @@ fun JokeCard(joke: JokeUi) {
                 .padding(start = 16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-            Text(modifier = Modifier, text = joke.setup, style = Typography.bodyLarge, color = Color.Black)
-            Text(modifier = Modifier, text = joke.punchline, style = Typography.bodyLarge, color = Color.Black)
+            Text(modifier = Modifier, text = joke.setup, style = JokesApiTheme.typography.body)
+            Text(modifier = Modifier, text = joke.punchline, style = JokesApiTheme.typography.body)
         }
     }
 }
