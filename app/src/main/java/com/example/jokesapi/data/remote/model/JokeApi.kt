@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class JokeApi(
-    @SerialName("id") val id: Int,
+    @SerialName("id") val id: String,
     @SerialName("type") val type: String,
     @SerialName("setup") val setup: String,
     @SerialName("punchline") val punchline: String,

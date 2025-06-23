@@ -9,7 +9,7 @@ import java.time.ZoneOffset
 @Entity(tableName = "good_jokes")
 data class JokesEntity(
     @PrimaryKey
-    @ColumnInfo("id") val id: Int,
+    @ColumnInfo("id") val id: String,
     @ColumnInfo("type") val type: String,
     @ColumnInfo("setup") val setup: String,
     @ColumnInfo("punchline") val punchline: String,

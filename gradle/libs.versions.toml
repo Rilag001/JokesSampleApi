@@ -1,20 +1,23 @@
 [versions]
-agp = "8.12.0-alpha03"
+agp = "8.12.0-alpha04"
 kotlin = "2.1.10"
 coreKtx = "1.16.0"
-lifecycleRuntimeKtx = "2.9.0"
+lifecycleRuntimeKtx = "2.9.1"
 activityCompose = "1.10.1"
-composeBom = "2025.05.01"
+composeBom = "2025.06.00"
 dagger_hilt_version = "2.56.2"
 dagger_version = "2.56.2"
+runner = "1.6.2"
 workRuntimeKtx = "2.10.1"
 room = "2.7.1"
 uiTooling = "1.8.2"
 okhttp = "4.12.0"
 image_glide_compose = "1.0.0-beta01"
+espressoIdlingResource = "3.6.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-runner = { module = "androidx.test:runner", version.ref = "runner" }
 androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "workRuntimeKtx" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
@@ -27,6 +30,7 @@ androidx-fragmentKtx = "androidx.fragment:fragment-ktx:1.8.7"
 androidx-navigation-compose = "androidx.navigation:navigation-compose:2.9.0"
 androidx-hilt-navigation-compose = "androidx.hilt:hilt-navigation-compose:1.2.0"
 
+mockwebserver = "com.squareup.okhttp3:mockwebserver:4.12.0"
 network-retrofit-bom = "com.squareup.retrofit2:retrofit-bom:3.0.0"
 network-retrofit = { module = "com.squareup.retrofit2:retrofit" }
 daggerHiltAndroid = { module = "com.google.dagger:hilt-android", version.ref = "dagger_hilt_version"}
@@ -51,13 +55,19 @@ tests-mockito-core = "org.mockito:mockito-core:5.18.0"
 tests-mockito-kotlin = "org.mockito.kotlin:mockito-kotlin:5.4.0"
 tests-junit = "junit:junit:4.13.2"
 tests-coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2"
+tests-compose-ui-junit4 = "androidx.compose.ui:ui-test-junit4:1.8.2"
+tests-compose-ui-manifest = "androidx.compose.ui:ui-test-manifest:1.8.2"
+tests-hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "dagger_hilt_version" }
+androidx-espresso-idling-resource = { group = "androidx.test.espresso", name = "espresso-idling-resource", version.ref = "espressoIdlingResource" }
+
 
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-ksp = { id = "com.google.devtools.ksp", version = "2.1.10-1.0.29"}
+ksp = { id = "com.google.devtools.ksp", version = "2.1.21-2.0.2"}
 hilt =  { id = "com.google.dagger.hilt.android" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlin-kapt = { id = "kotlin-kapt" }
 

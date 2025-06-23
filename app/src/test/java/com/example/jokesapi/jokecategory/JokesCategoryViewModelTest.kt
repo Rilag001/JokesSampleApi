@@ -45,7 +45,7 @@ class JokesCategoryViewModelTest {
         viewModel.state.test {
             val jokeType = JokeType.GENERAL
             val jokeUi = JokeUi(
-                id = 1,
+                id = "gjcq",
                 jokeType = jokeType,
                 setup = "setup",
                 punchline = "punchline"

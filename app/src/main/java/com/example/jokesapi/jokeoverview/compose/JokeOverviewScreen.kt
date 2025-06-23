@@ -34,6 +34,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.capitalize
@@ -216,7 +217,7 @@ private fun PreviewJokeOverViewScreenDisplayJokeCategoriesDark() {
 @Composable
 private fun PreviewJokeOverViewScreenDisplayJokeCategoriesContent() {
     val randomJoke = JokeUi(
-        id = 1,
+        id = "fgajfd",
         jokeType = JokeType.GENERAL,
         setup = "What kind of shoes does a thief wear?",
         punchline = "Sneakers"

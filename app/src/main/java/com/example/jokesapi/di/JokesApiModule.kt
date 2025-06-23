@@ -26,37 +26,12 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class JokesApiModule {
 
-    companion object {
-        private const val BASE_URL = "https://api.sampleapis.com/jokes/"
-    }
-
     @Reusable
     @Provides
     fun provideApplicationContext(application: Application): Context = application
 
     @Provides
     fun provideIoDispatcher(): CoroutineDispatcher = Dispatchers.IO
-
-    @Provides
-    @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit
-        .Builder()
-        .baseUrl(BASE_URL)
-        .client(okHttpClient)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-
-    @Provides
-    @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
-        val logger = HttpLoggingInterceptor()
-        logger.setLevel(HttpLoggingInterceptor.Level.BODY)
-
-        val okHttpClientBuilder = OkHttpClient.Builder()
-            .addInterceptor(logger)
-
-        return okHttpClientBuilder.build()
-    }
 
     @Provides
     fun provideJokesLocalDataSource(context: Context): JokesLocalDataSource {

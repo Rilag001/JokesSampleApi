@@ -166,13 +166,13 @@ private fun PreviewJokeOverViewScreenDisplayJokesDark() {
 @Composable
 private fun PreviewJokeOverViewScreenDisplayJokesContent() {
     val joke1 = JokeUi(
-        id = 1,
+        id = "yhd",
         jokeType = JokeType.GENERAL,
         setup = "What kind of shoes does a thief wear?",
         punchline = "Sneakers"
     )
-    val joke2 = joke1.copy(id = 2)
-    val joke3 = joke1.copy(id = 3)
+    val joke2 = joke1.copy(id = "gg")
+    val joke3 = joke1.copy(id = "tr")
     JokesCategoryScreenContent(
         modifier = Modifier,
         state = JokesCategoryContract.State.DisplayJokes(

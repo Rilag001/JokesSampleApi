@@ -50,7 +50,7 @@ private fun PreviewJokeCard() {
     JokesApiTheme(isDarkTheme = false) {
         JokeCard(
             joke = JokeUi(
-                id = 1,
+                id = "d451d",
                 setup = "Why did the chicken cross the road? Why did the chicken cross the road?",
                 punchline = "To get to the other side!",
                 jokeType = JokeType.GENERAL
@@ -65,7 +65,7 @@ private fun PreviewJokeCardDark() {
     JokesApiTheme(isDarkTheme = true) {
         JokeCard(
             joke = JokeUi(
-                id = 1,
+                id = "65ege",
                 setup = "Why did the chicken cross the road? Why did the chicken cross the road?",
                 punchline = "To get to the other side!",
                 jokeType = JokeType.GENERAL
@@ -80,7 +80,7 @@ private fun PreviewJokeCard2() {
     JokesApiTheme(isDarkTheme = false) {
         JokeCard(
             joke = JokeUi(
-                id = 1,
+                id = "gafdc",
                 setup = "Why did the chicken cross the road? Why did the chicken cross the road?",
                 punchline = "To get to the other side!",
                 jokeType = JokeType.KNOCK_KNOCK
@@ -95,7 +95,7 @@ private fun PreviewJokeCard2Dark() {
     JokesApiTheme(isDarkTheme = true) {
         JokeCard(
             joke = JokeUi(
-                id = 1,
+                id = "gafdc",
                 setup = "Why did the chicken cross the road? Why did the chicken cross the road?",
                 punchline = "To get to the other side!",
                 jokeType = JokeType.KNOCK_KNOCK
@@ -110,7 +110,7 @@ private fun PreviewJokeCard3() {
     JokesApiTheme(isDarkTheme = false) {
         JokeCard(
             joke = JokeUi(
-                id = 1,
+                id = "gafdc",
                 setup = "Why did the chicken cross the road? Why did the chicken cross the road?",
                 punchline = "To get to the other side!",
                 jokeType = JokeType.PROGRAMMING
@@ -125,7 +125,7 @@ private fun PreviewJokeCard3Dark() {
     JokesApiTheme(isDarkTheme = true) {
         JokeCard(
             joke = JokeUi(
-                id = 1,
+                id = "gafdc",
                 setup = "Why did the chicken cross the road? Why did the chicken cross the road?",
                 punchline = "To get to the other side!",
                 jokeType = JokeType.PROGRAMMING

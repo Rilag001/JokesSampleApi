@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
     alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.kotlin.kapt)
 }
 
 android {
@@ -20,7 +21,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.example.jokesapi.CustomTestRunner"
     }
 
     buildTypes {
@@ -59,6 +60,7 @@ dependencies {
     implementation(libs.daggerHiltAndroid)
     implementation(libs.androidx.hilt.work)
     implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.espresso.idling.resource)
     debugImplementation(libs.androidx.ui.tooling)
     ksp(libs.daggerHiltCompiler)
     ksp(libs.androidx.hilt.compiler)
@@ -70,13 +72,24 @@ dependencies {
     implementation(libs.androidx.work.runtime.ktx)
     implementation(libs.image.glideCompose)
 
+    implementation(libs.room.runtime)
+    ksp(libs.room.kps.compiler)
+    implementation(libs.room.ktx)
+
     testImplementation(libs.tests.junit)
     testImplementation(libs.tests.mockito.core)
     testImplementation(libs.tests.mockito.kotlin)
     testImplementation(libs.tests.coroutines)
     testImplementation(libs.tests.coroutines.turbine)
 
-    implementation(libs.room.runtime)
-    ksp(libs.room.kps.compiler)
-    implementation(libs.room.ktx)
+    androidTestImplementation(libs.tests.hilt.android.testing)
+    kspAndroidTest(libs.daggerHiltCompiler)
+    androidTestImplementation(libs.tests.compose.ui.junit4)
+    debugImplementation(libs.tests.compose.ui.manifest)
+    androidTestImplementation(libs.androidx.runner)
+    androidTestImplementation(libs.tests.hilt.android.testing)
+    androidTestImplementation(libs.mockwebserver)
+
+    androidTestImplementation("com.jakewharton.espresso:okhttp3-idling-resource:1.0.0")
+
 }

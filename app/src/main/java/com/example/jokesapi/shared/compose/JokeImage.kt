@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.platform.debugInspectorInfo
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
@@ -54,11 +55,12 @@ fun JokeImage(jokeType: JokeType) {
         .size(100.dp)
         .clickable { shakeEnabled = !shakeEnabled }
 
+
     if (!LocalInspectionMode.current) {
         GlideImage(
             modifier = imageModifier,
             model = imageRes,
-            contentDescription = "Joke Image",
+            contentDescription = "Joke Image $jokeType",
             contentScale = ContentScale.Crop,
         )
     } else {
